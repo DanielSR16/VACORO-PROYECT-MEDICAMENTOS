@@ -5,7 +5,7 @@ const medicamento = modelDB.db.medicamento
 async function allMedicamentos(){
     try {
         all_medicamentos = await medicamento.findAll({
-            
+
             }
 
         );
