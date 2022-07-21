@@ -63,7 +63,7 @@ async function getHistorialAnimalID(medicamento){
             {
                 where:{
 
-                    id : medicamento.id
+                    id_animal : medicamento.id_animal
 
                 }
             }

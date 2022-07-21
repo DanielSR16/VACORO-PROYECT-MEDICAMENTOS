@@ -76,11 +76,11 @@ router.post('/delete',async(req,res)=>{
 
 router.post('/getAnimalHistorial',async(req,res)=>{
 
-    id = req.body.id
+    id_animal = req.body.id_animal
 
 
     const Medicamento = {
-        id : id
+        id_animal : id_animal
     }
     const medicamento =  await medicamentos_historial_vaca_DAO.controller.getHistorialAnimalID(Medicamento)
     res.send(medicamento)
