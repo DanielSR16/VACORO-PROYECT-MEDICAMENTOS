@@ -1,4 +1,5 @@
-const modelDB =  require('../db/connection')
+const modelDB =  require('../db/connection');
+const medicamentos_historial_toros = require('../model/medicamentos_historial_toros');
 
 const medicamento_historial_toros = modelDB.db.medicamento_historial_toros
 
@@ -54,21 +55,26 @@ async function deleteMedicameento_historial(medicamento){
     }
 }
 
-async function getHistorialAnimalID(medicamento){
+
+
+async function getHistorialAnimalIDBull(medicamento){
     try {
 
         console.log(medicamento)
-        resultado = await medicamento_historial_vacas.findAll(
+        resultado = await medicamento_historial_toros.findAll(
             {
                 where:{
-                    id : medicamento.id
+                    id_animal : medicamento.id_animal
 
                 }
             }
         );
+        console.log("asdasdasd");
+        console.log(resultado);
         return resultado
 
     }catch (err) {
+        console.log(err);
         return err
     }
 }
@@ -80,6 +86,6 @@ controller.allMedicamentos_historial = allMedicamentos_historial
 controller.newMedicamento_historial = newMedicamento_historial
 controller.updateMedicamento_historial = updateMedicamento_historial
 controller.deleteMedicameento_historial = deleteMedicameento_historial
-controller.getHistorialAnimalID = getHistorialAnimalID
+controller.getHistorialAnimalIDBull = getHistorialAnimalIDBull
 
 module.exports = {controller}

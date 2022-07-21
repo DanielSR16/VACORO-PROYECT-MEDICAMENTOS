@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const medicamentos_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
-const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
+const medicamento_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
+
 
 
 
@@ -76,18 +76,17 @@ router.post('/delete',async(req,res)=>{
     res.send(medicamento)
 })
 
-router.post('/getAnimalHistorial',async(req,res)=>{
+router.post('/getAnimalHistorialBull',async(req,res)=>{
 
-    id = req.body.id
+    id_animal = req.body.id_animal
 
 
     const Medicamento = {
-        id : id
+        id_animal : id_animal
     }
-    const medicamento =  await medicamentos_historial_toro_DAO.controller.getHistorialAnimalID(Medicamento)
-    res.send(medicamento)
+    const medicamento =  await medicamento_historial_toro_DAO.controller.getHistorialAnimalIDBull(Medicamento)
+    res.json(medicamento)
 
 })
-
 
 module.exports = router
