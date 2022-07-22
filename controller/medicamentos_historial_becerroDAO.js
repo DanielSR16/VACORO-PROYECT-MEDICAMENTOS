@@ -55,15 +55,15 @@ async function deleteMedicameento_historial(medicamento){
 
 }
 
-async function getHistorialAnimalID(medicamento){
+async function getHistorialAnimalIDCalf(medicamento){
     try {
 
         console.log(medicamento)
-        resultado = await medicamento_historial_vacas.findAll(
+        resultado = await medicamento_historial_becerros.findAll(
             {
                 where:{
 
-                    id : medicamento.id
+                    id_animal : medicamento.id_animal
 
                 }
             }
@@ -83,6 +83,6 @@ controller.allMedicamentos_historial = allMedicamentos_historial
 controller.newMedicamento_historial = newMedicamento_historial
 controller.updateMedicamento_historial = updateMedicamento_historial
 controller.deleteMedicameento_historial = deleteMedicameento_historial
-controller.getHistorialAnimalID = getHistorialAnimalID
+controller.getHistorialAnimalIDCalf = getHistorialAnimalIDCalf
 
 module.exports = {controller}
