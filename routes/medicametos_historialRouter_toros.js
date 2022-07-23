@@ -5,7 +5,8 @@ const router = require('express').Router();
 const verificacion = require("../validacion");
 
 const medicamento_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
-const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
+
+verificacion = require("../validacion")
 
 
 router.get('/',(req,res)=>{

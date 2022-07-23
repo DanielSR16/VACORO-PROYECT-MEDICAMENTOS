@@ -16,14 +16,10 @@ const verificacion = express.Router()
     }
     if(token.startsWith('Bearer ')){
         token = token.slice(7,token.length);
-        console.log('segundo ')
-        console.log(token)
-
 
     }
     if(token){
-        jwt.verify(token,'clavesecreta123',(error,decode)=>{
-                console.log(error)
+        jwt.verify(token,"clavesecreta123",(error,decode)=>{
             if(error){
                 return res.json({
                     message: 'el token no es valido'
