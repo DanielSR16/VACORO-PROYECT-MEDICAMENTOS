@@ -11,6 +11,7 @@ module.exports = (sequelize, Sequelize) =>{
         descripcion: Sequelize.STRING,
         cantidad: Sequelize.FLOAT,
         fecha_caducidad: Sequelize.DATE,
+        id_usuario: Sequelize.INTEGER
     }, { freezeTableName: true, timestamps: false });
     return Medicamento;
 }

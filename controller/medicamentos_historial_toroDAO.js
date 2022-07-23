@@ -58,7 +58,7 @@ async function getHistorialAnimalID(medicamento){
     try {
 
         console.log(medicamento)
-        resultado = await medicamento_historial_vacas.findAll(
+        resultado = await medicamento_historial_toros.findAll(
             {
                 where:{
                     id : medicamento.id

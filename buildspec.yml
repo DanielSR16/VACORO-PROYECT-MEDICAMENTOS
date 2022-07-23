@@ -12,6 +12,7 @@ phases:
       - DOCKER_PASSWORD=dasaro1604
       - docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
       - npm install
+      - npm uptade
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)

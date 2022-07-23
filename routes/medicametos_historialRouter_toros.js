@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 const medicamentos_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
-const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
+
+const verificacion = require("../validacion");
 
 
 
@@ -10,7 +11,7 @@ router.get('/',(req,res)=>{
 
 });
 
-router.post('/new', async (req,res)=>{
+router.post('/new', verificacion,async (req,res)=>{
 
 
     id_medicamento = req.body.id_medicamento
@@ -35,7 +36,7 @@ router.post('/new', async (req,res)=>{
 
 })
 
-router.post('/update', async (req,res)=>{
+router.post('/update', verificacion,async (req,res)=>{
     id = req.body.id
     id_medicamento = req.body.id_medicamento
     dosis =  req.body.dosis
@@ -59,13 +60,13 @@ router.post('/update', async (req,res)=>{
     res.json(medicamento)
 })
 
-router.get('/all',async(req,res)=>{
+router.get('/all',verificacion,async(req,res)=>{
     const all =  await medicamentos_historial_toro_DAO.controller.allMedicamentos_historial()
     res.send(all)
 
 })
 
-router.post('/delete',async(req,res)=>{
+router.post('/delete',verificacion,async(req,res)=>{
     id = req.body.id
 
     const Medicamento = {
@@ -76,7 +77,7 @@ router.post('/delete',async(req,res)=>{
     res.send(medicamento)
 })
 
-router.post('/getAnimalHistorial',async(req,res)=>{
+router.post('/getAnimalHistorial',verificacion,async(req,res)=>{
 
     id = req.body.id
 

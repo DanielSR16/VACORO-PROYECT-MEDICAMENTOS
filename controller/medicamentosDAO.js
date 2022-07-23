@@ -96,6 +96,23 @@ async function getNameMedicamento(medicamento_){
 
     }
 }
+async function allMedicamentosbyUsuario(Medicamento){
+    try {
+        all_medicamentos = await medicamento.findAll({
+where:{
+    id_usuario : Medicamento.id_usuario
+}
+            }
+
+        );
+        return all_medicamentos;
+
+    } catch (error) {
+        console.log(error)
+
+    }
+}
+
 
 controller = {}
 controller.allMedicamentos = allMedicamentos
@@ -104,5 +121,6 @@ controller.updateMedicamento = updateMedicamento
 controller.deleteMedicameento = deleteMedicameento
 controller.getIdMedicamento = getIdMedicamento
 controller.getNameMedicamento = getNameMedicamento
+controller.allMedicamentosbyUsuario =allMedicamentosbyUsuario
 
 module.exports = {controller}
