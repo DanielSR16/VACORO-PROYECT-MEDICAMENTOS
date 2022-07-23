@@ -21,6 +21,7 @@ async function getIdMedicamento(medicamento_){
     try {
         id_medicamento = await medicamento.findAll({
                 where:{
+                    'id_usuario' : medicamento_.id_usuario,
                     'nombre': medicamento_.nombre
                 },
 

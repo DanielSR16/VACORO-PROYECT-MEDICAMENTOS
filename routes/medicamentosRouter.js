@@ -79,9 +79,11 @@ router.post('/borrarMedicamento',verificacion,async(req,res)=>{
 
 router.post('/idNameMedicina',verificacion,async (req,res)=>{
    nombre = req.body.nombre
+    id_usuario =  req.body.id_usuario
 
    const medicamento ={
-       nombre : nombre
+       nombre : nombre,
+       id_usuario : id_usuario
    }
 
    const res_id_medicamento = await medicamentos_DAO.controller.getIdMedicamento(medicamento)

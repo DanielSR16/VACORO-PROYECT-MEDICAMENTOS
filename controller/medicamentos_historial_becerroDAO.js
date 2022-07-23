@@ -75,6 +75,28 @@ async function getHistorialAnimalIDCalf(medicamento){
     }
 }
 
+async function getHistorialAnimalID_one(medicamento){
+    try {
+
+        console.log(medicamento)
+        resultado = await medicamento_historial_becerros.findOne(
+            {
+                where:{
+
+                    id : medicamento.id
+
+                }
+            }
+        );
+        return resultado
+
+    }catch (err) {
+        return err
+    }
+}
+
+
+
 
 
 
@@ -84,5 +106,5 @@ controller.newMedicamento_historial = newMedicamento_historial
 controller.updateMedicamento_historial = updateMedicamento_historial
 controller.deleteMedicameento_historial = deleteMedicameento_historial
 controller.getHistorialAnimalIDCalf = getHistorialAnimalIDCalf
-
+controller.getHistorialAnimalID_one = getHistorialAnimalID_one
 module.exports = {controller}

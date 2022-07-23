@@ -75,7 +75,7 @@ router.post('/delete',verificacion,async(req,res)=>{
     res.send(medicamento)
 })
 
-router.post('/getAnimalHistorial',verificacion,async(req,res)=>{
+router.post('/getAnimalHistorial',async(req,res)=>{
 
     id_animal = req.body.id_animal
 
@@ -89,6 +89,18 @@ router.post('/getAnimalHistorial',verificacion,async(req,res)=>{
 })
 
 
+router.post('/getAnimalHistorialOne',async(req,res)=>{
+
+    id = req.body.id
+
+
+    const Medicamento = {
+        id : id
+    }
+    const medicamento =  await medicamentos_historial_vaca_DAO.controller.getHistorialAnimalID_one(Medicamento)
+    res.send(medicamento)
+
+})
 
 
 module.exports = router

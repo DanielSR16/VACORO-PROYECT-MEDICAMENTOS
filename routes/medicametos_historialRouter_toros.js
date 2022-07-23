@@ -5,6 +5,7 @@ const router = require('express').Router();
 const verificacion = require("../validacion");
 
 const medicamento_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
+const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
 
 
 router.get('/',(req,res)=>{
@@ -31,7 +32,7 @@ router.post('/new', verificacion,async (req,res)=>{
         id_usuario : id_usuario
     }
 
-    const medicamento_res = await medicamentos_historial_toro_DAO.controller.newMedicamento_historial(medicamento_historial)
+    const medicamento_res = await medicamento_historial_toro_DAO.controller.newMedicamento_historial(medicamento_historial)
 
     res.json(medicamento_res)
 
@@ -57,12 +58,12 @@ router.post('/update', verificacion,async (req,res)=>{
         id_usuario :id_usuario
     }
 
-    const medicamento = await medicamentos_historial_toro_DAO.controller.updateMedicamento_historial(medicamento_historial);
+    const medicamento = await medicamento_historial_toro_DAO.controller.updateMedicamento_historial(medicamento_historial);
     res.json(medicamento)
 })
 
 router.get('/all',verificacion,async(req,res)=>{
-    const all =  await medicamentos_historial_toro_DAO.controller.allMedicamentos_historial()
+    const all =  await medicamento_historial_toro_DAO.controller.allMedicamentos_historial()
     res.send(all)
 
 })
@@ -74,7 +75,7 @@ router.post('/delete',verificacion,async(req,res)=>{
         id : id
     }
 
-    const medicamento =  await medicamentos_historial_toro_DAO.controller.deleteMedicameento_historial(Medicamento)
+    const medicamento =  await medicamento_historial_toro_DAO.controller.deleteMedicameento_historial(Medicamento)
     res.send(medicamento)
 })
 
@@ -88,6 +89,19 @@ router.post('/getAnimalHistorialBull',async(req,res)=>{
     }
     const medicamento =  await medicamento_historial_toro_DAO.controller.getHistorialAnimalIDBull(Medicamento)
     res.json(medicamento)
+
+})
+
+router.post('/getAnimalHistorialOne',async(req,res)=>{
+
+    id = req.body.id
+
+
+    const Medicamento = {
+        id : id
+    }
+    const medicamento =  await medicamento_historial_toro_DAO.controller.getHistorialAnimalID_one(Medicamento)
+    res.send(medicamento)
 
 })
 

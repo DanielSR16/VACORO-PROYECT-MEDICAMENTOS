@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const medicamentos_historial_becerros_DAO  = require('../controller/medicamentos_historial_becerroDAO')
 const verificacion = require("../validacion");
+const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
 
 
 
@@ -96,6 +97,19 @@ router.post('/deleteby',verificacion,async(req,res)=>{
 
     const medicamento =  await medicamentos_historial_becerros_DAO.controller.deleteMedicameento_historial(Medicamento)
     res.send(medicamento)
+})
+
+router.post('/getAnimalHistorialOne',async(req,res)=>{
+
+    id = req.body.id
+
+
+    const Medicamento = {
+        id : id
+    }
+    const medicamento =  await medicamentos_historial_becerros_DAO.controller.getHistorialAnimalID_one(Medicamento)
+    res.send(medicamento)
+
 })
 
 
