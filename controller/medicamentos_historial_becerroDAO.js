@@ -56,11 +56,31 @@ async function deleteMedicameento_historial(medicamento){
 
 }
 
-async function getHistorialAnimalID(medicamento){
+async function getHistorialAnimalIDCalf(medicamento){
     try {
 
         console.log(medicamento)
-        resultado = await medicamento_historial_vacas.findAll(
+        resultado = await medicamento_historial_becerros.findAll(
+            {
+                where:{
+
+                    id_animal : medicamento.id_animal
+
+                }
+            }
+        );
+        return resultado
+
+    }catch (err) {
+        return err
+    }
+}
+
+async function getHistorialAnimalID_one(medicamento){
+    try {
+
+        console.log(medicamento)
+        resultado = await medicamento_historial_becerros.findOne(
             {
                 where:{
 
@@ -79,11 +99,13 @@ async function getHistorialAnimalID(medicamento){
 
 
 
+
+
 controller = {}
 controller.allMedicamentos_historial = allMedicamentos_historial
 controller.newMedicamento_historial = newMedicamento_historial
 controller.updateMedicamento_historial = updateMedicamento_historial
 controller.deleteMedicameento_historial = deleteMedicameento_historial
-controller.getHistorialAnimalID = getHistorialAnimalID
-
+controller.getHistorialAnimalIDCalf = getHistorialAnimalIDCalf
+controller.getHistorialAnimalID_one = getHistorialAnimalID_one
 module.exports = {controller}

@@ -4,7 +4,8 @@ const verificacion = express.Router()
 
  verificacion.use((req,res,next)=>{
     let token = req.headers['x-access-token'] || req.headers['authorization']
-    // console.log(token)
+     console.log('a')
+    console.log(token)
     if(!token){
         res.status(401).send(
             {

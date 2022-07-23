@@ -3,9 +3,12 @@ const modelDB =  require('../db/connection')
 const medicamento_historial_vacas = modelDB.db.medicamento_historial_vacas
 
 
-async function allMedicamentos_historial(){
+async function allMedicamentos_historial_idUsuario(usuario){
+
     try {
-        all = await medicamento_historial_vacas.findAll();
+        all = await medicamento_historial_vacas.findAll({
+            where: usuario.id_usuario
+        });
         return all;
 
     } catch (error) {
@@ -76,12 +79,33 @@ async function getHistorialAnimalID(medicamento){
     }
 }
 
+async function getHistorialAnimalID_one(medicamento){
+    try {
+
+        console.log(medicamento)
+        resultado = await medicamento_historial_vacas.findOne(
+            {
+                where:{
+
+                    id : medicamento.id
+
+                }
+            }
+        );
+        return resultado
+
+    }catch (err) {
+        return err
+    }
+}
+
 
 controller = {}
-controller.allMedicamentos_historial = allMedicamentos_historial
+controller.allMedicamentos_historial_idUsuario = allMedicamentos_historial_idUsuario
 controller.newMedicamento_historial = newMedicamento_historial
 controller.updateMedicamento_historial = updateMedicamento_historial
 controller.deleteMedicameento_historial = deleteMedicameento_historial
 controller.getHistorialAnimalID = getHistorialAnimalID
+controller.getHistorialAnimalID_one = getHistorialAnimalID_one
 
 module.exports = {controller}

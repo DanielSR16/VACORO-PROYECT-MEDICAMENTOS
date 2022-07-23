@@ -2,13 +2,15 @@ const router = require('express').Router();
 
 const medicamentos_historial_vaca_DAO  = require('../controller/medicamentos_historial_vacaDAO')
 verificacion = require("../validacion")
+const verificacion = require("../validacion");
+
 
 router.get('/',(req,res)=>{
     res.send('Hola prueba medicmanetos historial')
 
 });
 
-router.post('/new', async (req,res)=>{
+router.post('/new', verificacion,async (req,res)=>{
 
     id_medicamento = req.body.id_medicamento
     dosis =  req.body.dosis
@@ -33,7 +35,7 @@ router.post('/new', async (req,res)=>{
 
 })
 
-router.post('/update', async (req,res)=>{
+router.post('/update', verificacion,async (req,res)=>{
     id = req.body.id
     id_medicamento = req.body.id_medicamento
     dosis =  req.body.dosis
@@ -57,7 +59,7 @@ router.post('/update', async (req,res)=>{
     res.json(medicamento)
 })
 
-router.get('/all',async(req,res)=>{
+router.get('/all',verificacion,async(req,res)=>{
     const all =  await medicamentos_historial_vaca_DAO.controller.allMedicamentos_historial()
     res.send(all)
 
@@ -88,6 +90,18 @@ router.post('/getAnimalHistorial',async(req,res)=>{
 })
 
 
+router.post('/getAnimalHistorialOne',async(req,res)=>{
+
+    id = req.body.id
+
+
+    const Medicamento = {
+        id : id
+    }
+    const medicamento =  await medicamentos_historial_vaca_DAO.controller.getHistorialAnimalID_one(Medicamento)
+    res.send(medicamento)
+
+})
 
 
 module.exports = router
