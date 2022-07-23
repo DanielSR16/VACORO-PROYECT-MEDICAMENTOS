@@ -41,13 +41,14 @@ async function updateMedicamento_historial(medicamento){
 }
 async function deleteMedicameento_historial(medicamento){
     try {
-        resultado = await medicamento_historial_toros.destroy(
+        resultado = await medicamento_historial_becerros.destroy(
             {
                 where:{
-                    id:medicamento.id
+                    id_animal:medicamento.id
                 }
             }
         );
+        return  {status:'ok'}
 
     }catch (err) {
         return err

@@ -45,10 +45,11 @@ async function deleteMedicameento_historial(medicamento){
         resultado = await medicamento_historial_vacas.destroy(
             {
                 where:{
-                    id:medicamento.id
+                    id_animal:medicamento.id
                 }
             }
         );
+        return  {status:'ok'}
 
     }catch (err) {
         return err

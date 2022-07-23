@@ -3,7 +3,7 @@ const router = require('express').Router();
 const medicamentos_historial_becerros_DAO  = require('../controller/medicamentos_historial_becerroDAO')
 const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
 
-
+verificacion = require("../validacion")
 
 router.get('/',(req,res)=>{
     res.send('Hola prueba medicmanetos historial')
@@ -63,7 +63,7 @@ router.get('/all',async(req,res)=>{
 
 })
 
-router.post('/delete',async(req,res)=>{
+router.post('/delete',verificacion,async(req,res)=>{
     id = req.body.id
 
     const Medicamento = {

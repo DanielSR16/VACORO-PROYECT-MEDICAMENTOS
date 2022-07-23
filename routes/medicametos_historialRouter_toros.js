@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const medicamento_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
 
-
+verificacion = require("../validacion")
 
 
 router.get('/',(req,res)=>{
@@ -65,14 +65,14 @@ router.get('/all',async(req,res)=>{
 
 })
 
-router.post('/delete',async(req,res)=>{
+router.post('/delete',verificacion,async(req,res)=>{
     id = req.body.id
 
     const Medicamento = {
         id : id
     }
 
-    const medicamento =  await medicamentos_historial_toro_DAO.controller.deleteMedicameento_historial(Medicamento)
+    const medicamento =  await medicamento_historial_toro_DAO.controller.deleteMedicameento_historial(Medicamento)
     res.send(medicamento)
 })
 
