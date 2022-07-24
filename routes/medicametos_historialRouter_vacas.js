@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const medicamentos_historial_vaca_DAO  = require('../controller/medicamentos_historial_vacaDAO')
-verificacion = require("../validacion")
+
 const verificacion = require("../validacion");
 
 

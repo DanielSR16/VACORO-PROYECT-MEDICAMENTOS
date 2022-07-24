@@ -6,7 +6,6 @@ const verificacion = require("../validacion");
 
 const medicamento_historial_toro_DAO  = require('../controller/medicamentos_historial_toroDAO')
 
-verificacion = require("../validacion")
 
 
 router.get('/',(req,res)=>{
