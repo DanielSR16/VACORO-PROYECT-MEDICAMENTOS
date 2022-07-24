@@ -33,6 +33,7 @@ router.post('/actualizarMedicamento', verificacion,async (req,res)=>{
     descripcion =  req.body.descripcion
     cantidad = req.body.cantidad
     fecha_caducidad = req.body.fecha_caducidad
+    id_usuario = req.body.id_usuario
 
     const Medicamento = {
         id : id,
@@ -40,7 +41,7 @@ router.post('/actualizarMedicamento', verificacion,async (req,res)=>{
         descripcion : descripcion,
         cantidad : cantidad,
         fecha_caducidad : fecha_caducidad,
-
+        id_usuario : id_usuario
     }
 
     const medicamento = await medicamentos_DAO.controller.updateMedicamento(Medicamento);

@@ -4,7 +4,6 @@ const medicamentos_historial_becerros_DAO  = require('../controller/medicamentos
 const verificacion = require("../validacion");
 const medicamentos_historial_vaca_DAO = require("../controller/medicamentos_historial_vacaDAO");
 
-verificacion = require("../validacion")
 
 
 router.get('/',(req,res)=>{
